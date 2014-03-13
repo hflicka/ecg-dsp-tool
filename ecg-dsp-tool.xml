@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ecg-dsp-tool" default="all">
+  
+  
+  <property file="ecg-dsp-tool.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.apk"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module ecg-dsp-tool -->
+  
+  <dirname property="module.ecg-dsp-tool.basedir" file="${ant.file}"/>
+  
+  
+  
+  <property name="compiler.args.ecg-dsp-tool" value="${compiler.args}"/>
+  
+  <property name="ecg-dsp-tool.output.dir" value="${module.ecg-dsp-tool.basedir}/out/production/ecg-dsp-tool"/>
+  <property name="ecg-dsp-tool.testoutput.dir" value="${module.ecg-dsp-tool.basedir}/out/test/ecg-dsp-tool"/>
+  
+  <path id="ecg-dsp-tool.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="ecg-dsp-tool.module.production.classpath"/>
+  
+  <path id="ecg-dsp-tool.runtime.production.module.classpath">
+    <pathelement location="${ecg-dsp-tool.output.dir}"/>
+  </path>
+  
+  <path id="ecg-dsp-tool.module.classpath">
+    <pathelement location="${ecg-dsp-tool.output.dir}"/>
+  </path>
+  
+  <path id="ecg-dsp-tool.runtime.module.classpath">
+    <pathelement location="${ecg-dsp-tool.testoutput.dir}"/>
+    <pathelement location="${ecg-dsp-tool.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.ecg-dsp-tool">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.ecg-dsp-tool">
+    <patternset refid="excluded.from.module.ecg-dsp-tool"/>
+  </patternset>
+  
+  <path id="ecg-dsp-tool.module.sourcepath">
+    <dirset dir="${module.ecg-dsp-tool.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.ecg-dsp-tool" depends="compile.module.ecg-dsp-tool.production,compile.module.ecg-dsp-tool.tests" description="Compile module ecg-dsp-tool"/>
+  
+  <target name="compile.module.ecg-dsp-tool.production" description="Compile module ecg-dsp-tool; production classes">
+    <mkdir dir="${ecg-dsp-tool.output.dir}"/>
+    <javac destdir="${ecg-dsp-tool.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.ecg-dsp-tool}"/>
+      <bootclasspath refid="ecg-dsp-tool.module.bootclasspath"/>
+      <classpath refid="ecg-dsp-tool.module.production.classpath"/>
+      <src refid="ecg-dsp-tool.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.ecg-dsp-tool"/>
+    </javac>
+    
+    <copy todir="${ecg-dsp-tool.output.dir}">
+      <fileset dir="${module.ecg-dsp-tool.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.ecg-dsp-tool.tests" depends="compile.module.ecg-dsp-tool.production" description="compile module ecg-dsp-tool; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.ecg-dsp-tool" description="cleanup module">
+    <delete dir="${ecg-dsp-tool.output.dir}"/>
+    <delete dir="${ecg-dsp-tool.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.ecg-dsp-tool" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.ecg-dsp-tool" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.ecg-dsp-tool:jar" value="${basedir}/out/artifacts/ecg_dsp_tool_jar"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.ecg-dsp-tool.jar" value="${artifacts.temp.dir}/ecg-dsp-tool.jar"/>
+  </target>
+  
+  <target name="artifact.ecg-dsp-tool:jar" depends="init.artifacts, compile.module.ecg-dsp-tool" description="Build &#39;ecg-dsp-tool:jar&#39; artifact">
+    <property name="artifact.temp.output.ecg-dsp-tool:jar" value="${artifacts.temp.dir}/ecg_dsp_tool_jar"/>
+    <mkdir dir="${artifact.temp.output.ecg-dsp-tool:jar}"/>
+    <jar destfile="${temp.jar.path.ecg-dsp-tool.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${ecg-dsp-tool.output.dir}"/>
+      <zipfileset dir="${basedir}/data" prefix="data"/>
+    </jar>
+    <copy file="${temp.jar.path.ecg-dsp-tool.jar}" tofile="${artifact.temp.output.ecg-dsp-tool:jar}/ecg-dsp-tool.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.ecg-dsp-tool:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.ecg-dsp-tool:jar}"/>
+    <copy todir="${artifact.output.ecg-dsp-tool:jar}">
+      <fileset dir="${artifact.temp.output.ecg-dsp-tool:jar}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
