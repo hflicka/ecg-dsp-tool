@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ecg-dsp-tool:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ecg_dsp_tool_jar</output-path>
+    <root id="archive" name="ecg-dsp-tool.jar">
+      <element id="module-output" name="ecg-dsp-tool" />
+      <element id="directory" name="data">
+        <element id="dir-copy" path="$PROJECT_DIR$/data" />
+      </element>
+    </root>
+  </artifact>
+</component>
