@@ -95,7 +95,7 @@ public class DspTool extends JFrame {
 		contentPane.add(panButtons);
 		panButtons.setLayout(new BoxLayout(panButtons, BoxLayout.Y_AXIS));
 		
-		JButton btnLoad = new JButton("Load");
+		JButton btnLoad = new JButton("Load Signal");
 		btnLoad.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -110,7 +110,7 @@ public class DspTool extends JFrame {
 		});
 		panButtons.add(btnLoad);
 		
-		JButton btnSwap = new JButton("Swap");
+		JButton btnSwap = new JButton("Swap Signals");
 		btnSwap.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnSwap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -138,7 +138,7 @@ public class DspTool extends JFrame {
 			}
 		});
 		
-		JButton btnLowpassFilter = new JButton("Gauss Lowpass Filter");
+		JButton btnLowpassFilter = new JButton("Gaussian Lowpass Filter");
 		btnLowpassFilter.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnLowpassFilter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -156,7 +156,7 @@ public class DspTool extends JFrame {
 		panButtons.add(btnCopyDown);
 		panButtons.add(btnLowpassFilter);
 		
-		JButton btnQrsDetectionLowpass = new JButton("QRS Detection Lowpass");
+		JButton btnQrsDetectionLowpass = new JButton("QRS Detection 1: Lowpass");
 		btnQrsDetectionLowpass.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				signalB.setSignal(Dsp.filter(signalB.getSignal(), panLowPass));
@@ -165,7 +165,7 @@ public class DspTool extends JFrame {
 		btnQrsDetectionLowpass.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panButtons.add(btnQrsDetectionLowpass);
 		
-		JButton btnQrsDetectionHighpass = new JButton("QRS Detection Highpass");
+		JButton btnQrsDetectionHighpass = new JButton("QRS Detection 2: Highpass");
 		btnQrsDetectionHighpass.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				signalB.setSignal(Dsp.filter(signalB.getSignal(), panHighPass));
@@ -174,7 +174,7 @@ public class DspTool extends JFrame {
 		btnQrsDetectionHighpass.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panButtons.add(btnQrsDetectionHighpass);
 		
-		JButton btnQrsDetectionDerivative = new JButton("QRS Detection Derivative");
+		JButton btnQrsDetectionDerivative = new JButton("QRS Detection 3: Derivative");
 		btnQrsDetectionDerivative.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				signalB.setSignal(Dsp.filter(signalB.getSignal(), panDerivative));
@@ -183,7 +183,7 @@ public class DspTool extends JFrame {
 		btnQrsDetectionDerivative.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panButtons.add(btnQrsDetectionDerivative);
 		
-		JButton btnSquareSignal = new JButton("Square Signal");
+		JButton btnSquareSignal = new JButton("QRS Detection 4: Square Signal");
 		btnSquareSignal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				signalB.setSignal(square.apply(signalB.getSignal()));
@@ -192,7 +192,7 @@ public class DspTool extends JFrame {
 		btnSquareSignal.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panButtons.add(btnSquareSignal);
 		
-		JButton btnIntegrate = new JButton("Integrate");
+		JButton btnIntegrate = new JButton("QRS Detection 5: Integrate");
 		btnIntegrate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				signalB.setSignal(Dsp.filter(signalB.getSignal(), panIntegrate));
@@ -201,7 +201,7 @@ public class DspTool extends JFrame {
 		btnIntegrate.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panButtons.add(btnIntegrate);
 		
-		JButton btnApplyTreshold = new JButton("Apply Treshold");
+		JButton btnApplyTreshold = new JButton("QRS Detection 6: Apply Treshold");
 		btnApplyTreshold.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				float[] signal = signalB.getSignal();
